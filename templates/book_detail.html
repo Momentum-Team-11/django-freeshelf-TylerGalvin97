@@ -5,8 +5,9 @@
 <div>
     {% if book %}
     <h2>{{ book.title }}</h2><br/>
-    <h3>{{ book.artist }}</h3>
+    <h3>{{ book.author }}</h3>
     <h4>{{ book.created_at }}</h4>
+    <h4>{{ book.description }}</h4>
     {% endif %}
 </div>
 {% endblock %}

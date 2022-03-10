@@ -5,20 +5,27 @@
 <h1>books</h1>
 
 <p><a href="{% url 'add_book' %}">add new book</p>
-
+    <div class="flex-wrap">
+        <h4>Sort by:</h4>
+        {% for genre in genres %}
+        <a href="{% url 'genre' slug=genre.slug %}"><button type="submit">{{ genre.name }}</button></a>
+        {% endfor %}
+       </div>
 <div>
     {% for book in books %}
     <div class="books">
         <h2><a href="{% url 'book_detail' pk=book.pk %}">{{ book.title }}</a></h2>
             <div>
-                <h3>{{ book.artist }}</h3>
+                <h3>{{ book.author }}</h3>
+                <h5>{{ book.description }}</h5>
                 <h4>added: {{ book.created_at }}</h4>
             </div>
     </div>
         <a href="{% url 'edit_book' pk=book.pk %}">edit book</a><br/>
-        <a href="{% url 'delete_book' pk=book.pk %}">delete book</a>
+        <a href="{% url 'delete_book' pk=book.pk %}">delete book</a><br/>
     {% endfor %}
 </div>
+
 
 
 {% endblock %}
