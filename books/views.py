@@ -64,7 +64,7 @@ def newest(request):
     return render (request, 'list_book.html', context)
 
 def genre(request, slug):
-    genre = get_object_or_404(genre, slug=slug)
-    books = genre.books.all()
+    genre = get_object_or_404(Genre, slug=slug)
+    books = genre.sorted_books.all()
 
     return render(request, 'genre.html', {"genre": genre, "books": books})
